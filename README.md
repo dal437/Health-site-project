@@ -1,26 +1,44 @@
-The content below is an example project proposal / requirements document. Replace the text below the lines marked "__TODO__" with details specific to your project. Remove the "TODO" lines.
-
 (___TODO__: your project name_)
 
-# Shoppy Shoperson 
+# Medical Check-in
 
 ## Overview
 
 (___TODO__: a brief one or two paragraph, high-level description of your project_)
 
-Remembering what to buy at the grocery store is waaaaay too difficult. Also, shopping for groceries when you're hungry leads to regrettable purchases. Sooo... that's where Shoppy Shoperson comes in!
+It's very important that every person has a yearly medical check-up. However
+several people believe that as long as they are feeling fine, then they are
+completely healthy. Individuals who have a family history of a certain
+disease, especially in cancer, have a higher probability of receiving
+the genes that express that disease.
 
-Shoppy Shoperson is a web app that will allow users to keep track of multiple grocery lists. Users can register and login. Once they're logged in, they can create or view their grocery list. For every list that they have, they can add items to the list or cross off items.
+Medical Check-in is a web app that allows users to enter certain information
+of themselves such as: their gender, their age, and their last medical check-up.
+Using this information, the site will be able to tell you whether it's time
+for a medical check-in or if they are fine to wait, but that they should definitely
+remember to have a medical check-in. The site will focus on specific types
+of cancers where there is more information regarding the age when certain
+individuals receive this illness.
+
+The site will also have an about page regarding facts about each cancer that the
+site uses and then a third page in which the site will give a few helpful sites
+that can give them more information about certain cancers stored in a
+database. There will also be an option in which the site will ask the user if
+they have a site that they may like and will give them the option to add the
+site in the list. When the site is submitted, the site will be added to the list
+with the site thanking the user.
 
 
 ## Data Model
 
-(___TODO__: a description of your application's data and their relationships to each other_) 
+(___TODO__: a description of your application's data and their relationships to each other_)
 
-The application will store Users, Lists and Items
+The application will use given information in order to render an answer.
+The application will also use databases to have helpful sites for users
+to access and have the option to add a helpful site.
 
-* users can have multiple lists (via references)
-* each list can have multiple items (by embedding)
+* users will input information to receive data about a certain cancer
+* the site will also have an about page regarding a mini description.
 
 (___TODO__: sample documents_)
 
@@ -28,9 +46,7 @@ An Example User:
 
 ```javascript
 {
-  username: "shannonshopper",
-  hash: // a password hash,
-  lists: // an array of references to List documents
+  databases: // extracts information from the database in response to queries
 }
 ```
 
@@ -38,18 +54,18 @@ An Example List with Embedded Items:
 
 ```javascript
 {
-  user: // a reference to a User object
-  name: "Breakfast foods",
-  items: [
-    { name: "pancakes", quantity: "9876", checked: false},
-    { name: "ramen", quantity: "2", checked: true},
+  gender: "Male" or "Female"
+  age: "Number",
+  last medical check-in: "Date"
+  type of cancer: [
+    { name: "lung cancer"},
+    { name: "colon cancer"},
   ],
-  createdAt: // timestamp
 }
 ```
 
 
-## [Link to Commented First Draft Schema](db.js) 
+## [Link to Commented First Draft Schema](db.js)
 
 (___TODO__: create a first draft of your Schemas in db.js and link to it_)
 
@@ -57,17 +73,15 @@ An Example List with Embedded Items:
 
 (___TODO__: wireframes for all of the pages on your site; they can be as simple as photos of drawings or you can use a tool like Balsamiq, Omnigraffle, etc._)
 
-/list/create - page for creating a new shopping list
+/home/check-in - page for entering information
 
-![list create](documentation/list-create.png)
+/check-in/ - page for showing specific data regarding information user entered
 
-/list - page for showing all shopping lists
+/about - page for showing mini descriptions of certain cancers
 
-![list](documentation/list.png)
+/useful sites - page showing a database of sites which users can access
 
-/list/slug - page for showing specific shopping list
-
-![list](documentation/list-slug.png)
+/add a site - page where user can add a site to the database of useful sites
 
 ## Site map
 
@@ -79,32 +93,26 @@ Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia
 
 (___TODO__: write out how your application will be used through [user stories](http://en.wikipedia.org/wiki/User_story#Format) and / or [use cases](https://www.mongodb.com/download-center?jmp=docs&_ga=1.47552679.1838903181.1489282706#previous)_)
 
-1. as non-registered user, I can register a new account with the site
-2. as a user, I can log in to the site
-3. as a user, I can create a new grocery list
-4. as a user, I can view all of the grocery lists I've created in a single list
-5. as a user, I can add items to an existing grocery list
-6. as a user, I can cross off items in an existing grocery list
-
+1. as non-registered user, I can put in information about my age, gender, and last date of medical check-in
+2. as non-registered user, I can receive information about whether I should go in for a medical check-in
+3. as non-registered user, I can read more about certain cancers and look at charts/statistics
+4. as non-registered user, I can look at sites which could help me learn more about certain cancers
+5. as non-registered user, I can add a site to the list of given sites to help others read up more about cancer
 ## Research Topics
 
 (___TODO__: the research topics that you're planning on working on along with their point values... and the total points of research topics listed_)
 
-* (5 points) Integrate user authentication
-    * I'm going to be using passport for user authentication
-    * And account has been made for testing; I'll email you the password
-    * see <code>cs.nyu.edu/~jversoza/ait-final/register</code> for register page
-    * see <code>cs.nyu.edu/~jversoza/ait-final/login</code> for login page
-* (4 points) Perform client side form validation using a JavaScript library
-    * see <code>cs.nyu.edu/~jversoza/ait-final/my-form</code>
-    * if you put in a number that's greater than 5, an error message will appear in the dom
-* (5 points) vue.js
-    * used vue.js as the frontend framework; it's a challenging library to learn, so I've assigned it 5 points
+* (3 points) Using Bootstrap.js
+    * Will use this for front-end component library
+* (4 points) Using bl.ocks.org
+    * Will create a population chart indicating individuals with cancer/statistics (Harder than the other two)
+* (3 points) D3 API Reference
+    * Will use it for creating statistics and histograms
 
 10 points total out of 8 required points (___TODO__: addtional points will __not__ count for extra credit_)
 
 
-## [Link to Initial Main Project File](app.js) 
+## [Link to Initial Main Project File](app.js)
 
 (___TODO__: create a skeleton Express application with a package.json, app.js, views folder, etc. ... and link to your initial app.js_)
 
@@ -112,5 +120,6 @@ Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia
 
 (___TODO__: list any tutorials/references/etc. that you've based your code off of_)
 
-1. [passport.js authentication docs](http://passportjs.org/docs) - (add link to source code that was based on this)
-2. [tutorial on vue.js](https://vuejs.org/v2/guide/) - (add link to source code that was based on this)
+1. Bootstrap.js: http://getbootstrap.com/
+2. bl.ocks.org: https://bl.ocks.org/-/about
+3. D3 API Reference: https://github.com/d3/d3/blob/master/API.md
