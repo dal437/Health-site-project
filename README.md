@@ -82,12 +82,12 @@ An Example List with Embedded Items:
 
 * (3 points) Using Bootstrap.js
     * Will use this for front-end component library
-* (4 points) Using bl.ocks.org
-    * Will create a population chart indicating individuals with cancer/statistics (Harder than the other two)
-* (3 points) D3 API Reference
+* (2 points) Using less
+    * Will use as an extension to CSS
+* (4 points) D3 API Reference (Harder than the other two)
     * Will use it for creating statistics and histograms
 
-10 points total out of 8 required points 
+9 points total out of 8 required points
 
 
 
