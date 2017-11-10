@@ -46,7 +46,7 @@ app.post('/working-project/add', (req, res) => {
     movie.save(() => res.redirect('/working-project'));
 });
 
-app.get('/about', (req, res) =>
+app.get('/working-project/about', (req, res) =>
     res.render('about.hbs', { movies: req.session.addedMovies }));
 
 const PORT = process.env.PORT || 5000;
