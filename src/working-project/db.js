@@ -9,6 +9,7 @@ const InfoSchema = new Schema({
     age: Number,
     gender: String,
     state: String,
+    ethnicity: String,
 });
 
 // list of sites for user to access

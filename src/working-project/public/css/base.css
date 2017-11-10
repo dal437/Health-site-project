@@ -1,7 +1,29 @@
+Working on less (pseudocode):
+
+This will present the background color and text color:
+
+@background-color: #ff8c00;
+@text-color: #ff8c00;
+
+p{
+  background-color: @background-color;
+  color: @text-color;
+  padding: 20px;
+}
+
+ul{
+  background-color: @background-color;
+}
+
+li{
+  color: @text-color;
+}
+
+
 body{
 	margin: 30px;
 	font-family: Georgia, serif;
-	color: #dc143c;
+	color: #ff8c00;
 	background-color: #ff8c00;
 }
 

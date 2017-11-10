@@ -9,7 +9,6 @@
 
       <form method="GET" action="/"><center>
         <input type="radio" name="filterdisease" value="Diabetes"> Diabetes
-        <input type="radio" name="filterdisease" value="Cancer"> Cancer
         <input type="radio" name="filterdisease" value="Asthma"> Asthma
         <input type="radio" name="filterdisease" value="Arthritis"> Arthritis
         <input type="radio" name="filterdisease" value="Chronic Kidney Disease"> Chronic Kidney Disease
@@ -20,7 +19,7 @@
 		<center>This site is designated to inform you more about the health qualities in your state<center/>
       <ul>
       {{#each option as |n|}}
-      	<p>{{n.gender}} ({{n.age}}) - {{n.age}} | {{n.location}}</p>
+      	<p>{{n.gender}} ({{n.age}}) {{n.ethnicity}} | {{n.state}}</p>
       {{/each}}
       </ul>
       <hr>
@@ -37,6 +36,7 @@
       	State (Initials please): <input type="text" name="state" required>
         <br>
         <br>
+				Ethnicity: <input type="text" name="ethnicity" required>
       <input type="submit" value="Submit">
     </form>
 		<center><h1><a href="\links">More Links</a> <b>|<b> <a href="\about">About</a></h1></center>
