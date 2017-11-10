@@ -1,7 +1,7 @@
 // 1ST DRAFT DATA MODEL
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const MONGO_URI = process.env.MONGODB_URI;
+const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost/myapp';
 
 
 // my schema goes here!
