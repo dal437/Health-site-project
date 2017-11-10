@@ -8,8 +8,7 @@ const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost/myapp';
 const InfoSchema = new Schema({
     age: Number,
     gender: String,
-    date: Number,
-    cancer: String
+    state: String,
 });
 
 // list of sites for user to access
@@ -18,3 +17,7 @@ const Listofsites = new mongoose.Schema({
 });
 
 mongoose.connect(MONGO_URI);
+
+module.exports = {
+    Listofsites,
+};
