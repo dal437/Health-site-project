@@ -19,7 +19,7 @@ app.use(session(sessionOptions));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('layout.hbs');
 });
 
 const PORT = process.env.PORT || 5000;
