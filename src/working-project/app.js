@@ -22,6 +22,9 @@ app.get('/', (req, res) => {
   res.render('layout.hbs');
 });
 
+app.post('/', (req, res) => {
+  res.render('layout.hbs');
+})
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
