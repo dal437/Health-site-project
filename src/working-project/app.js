@@ -30,8 +30,8 @@ app.get('/', (req, res) => {
         (err, movies) => res.render('layout.hbs', { movies }));
 });
 
-app.get('/add', (_, res) => res.render('add.hbs'));
-app.post('/add', (req, res) => {
+app.get('/working-project/add', (_, res) => res.render('add.hbs'));
+app.post('/working-project/add', (req, res) => {
     const title = req.body.title;
     const year = req.body.year;
     const director = req.body.director;
@@ -46,7 +46,7 @@ app.post('/add', (req, res) => {
     movie.save(() => res.redirect('/'));
 });
 
-app.get('/about', (req, res) =>
+app.get('/working-project/about', (req, res) =>
     res.render('about.hbs', { movies: req.session.addedMovies }));
 
 const PORT = process.env.PORT || 5000;
