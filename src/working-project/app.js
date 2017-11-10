@@ -20,7 +20,7 @@ app.use(session(sessionOptions));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Set up routes
-app.get('/working-project', (req, res) => {
+app.get('/', (req, res) => {
     const d = req.query.director;
     const q = {};
     if (d) {
@@ -30,8 +30,8 @@ app.get('/working-project', (req, res) => {
         (err, movies) => res.render('layout.hbs', { movies }));
 });
 
-app.get('/working-project/add', (_, res) => res.render('add.hbs'));
-app.post('/working-project/add', (req, res) => {
+app.get('/add', (_, res) => res.render('add.hbs'));
+app.post('/add', (req, res) => {
     const title = req.body.title;
     const year = req.body.year;
     const director = req.body.director;
@@ -43,10 +43,10 @@ app.post('/working-project/add', (req, res) => {
     else {
       req.session.addedMovies = [movie.toObject()];
     }
-    movie.save(() => res.redirect('/working-project'));
+    movie.save(() => res.redirect('/'));
 });
 
-app.get('/working-project/about', (req, res) =>
+app.get('/about', (req, res) =>
     res.render('about.hbs', { movies: req.session.addedMovies }));
 
 const PORT = process.env.PORT || 5000;
