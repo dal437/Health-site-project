@@ -1,39 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Document</title>
-	</head>
-	<body>
-		<h1><b><center>Let's Watch Some Movies!<center><b></h1>
-      <form action="/" method="GET">
-        <center>Director: <input type="text" name="director" required/>
-  			<input type="submit" value="Filter" /><center>
-  		</form>
-      <br>
-      <style>
-      table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-      }
-      </style>
-      <table>
-      <tr>
-        <th>Title</th>
-        <th>Year</th>
-        <th>Director</th>
-      </tr>
-      {{#each movies}}
-      <tr>
-      <td>{{this.title}}</td>
-      <td>{{this.year}}</td>
-      <td>{{this.director}}</td>
-    </tr>
-    {{/each}}
-    </table>
+<head>
+<title></title>
+</head>
+<body>
+		<h1><center>Welcome to Medical Check-In<center/></h1>
+			<h2><center>Click on certain medical conditions you would like to know more about<center/></h2>
+      <hr>
 
-      <ul style="list-style-type: none;">
-  		</ul>
-      <a href="/working-project/add"><center>Add a Medical Condition<center></a>
-	</body>
+      <form method="GET" action="/"><center>
+        <input type="radio" name="filterDisease" value="Diabetes"> Diabetes
+        <input type="radio" name="filterDisease" value="Asthma"> Asthma
+        <input type="radio" name="filterDisease" value="Arthritis"> Arthritis
+        <input type="radio" name="filterDisease" value="Chronic Kidney Disease"> Chronic Kidney Disease
+        <input type="radio" name="filterDisease" value="Cardiovascular Disease"> Cardiovascular Disease
+      <center/></form>
+      <hr>
+
+		<center>This site is designated to inform you more about the health qualities in your state<center/>
+      <ul>
+      {{#each option as |n|}}
+      	<p>{{n.gender}} ({{n.age}}) {{n.ethnicity}} | {{n.state}}</p>
+      {{/each}}
+      </ul>
+      <hr>
+    <center>Please enter the following information: <center/><br/>
+
+
+      <form method="POST" action="/">
+      	Gender: <input type="text" name="gender" required>
+        <br>
+        <br>
+      	Age: <input type="text" name="age" required>
+        <br>
+        <br>
+      	State (Initials please): <input type="text" name="state" required>
+        <br>
+        <br>
+				Ethnicity: <input type="text" name="ethnicity" required>
+      <input type="submit" value="Submit">
+    </form>
+		<center><h1><a href="\links">More Links</a> <b>|<b> <a href="\about">About</a></h1></center>
+</body>
 </html>
