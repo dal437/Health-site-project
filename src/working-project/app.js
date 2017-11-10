@@ -13,12 +13,13 @@ const sessionOptions = {
 };
 
 // Configure appi
-app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session(sessionOptions));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Set up routes
-app.get('/movies', (req, res) => {
+app.get('/working-project', (req, res) => {
     const d = req.query.director;
     const q = {};
     if (d) {
@@ -28,8 +29,8 @@ app.get('/movies', (req, res) => {
         (err, movies) => res.render('layout.hbs', { movies }));
 });
 
-app.get('/movies/add', (_, res) => res.render('add.hbs'));
-app.post('/movies/add', (req, res) => {
+app.get('/working-project/add', (_, res) => res.render('add.hbs'));
+app.post('/working-project/add', (req, res) => {
     const title = req.body.title;
     const year = req.body.year;
     const director = req.body.director;
@@ -41,7 +42,7 @@ app.post('/movies/add', (req, res) => {
     else {
       req.session.addedMovies = [movie.toObject()];
     }
-    movie.save(() => res.redirect('/movies'));
+    movie.save(() => res.redirect('/working-project'));
 });
 
 app.get('/about', (req, res) =>
