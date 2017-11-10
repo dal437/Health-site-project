@@ -28,5 +28,23 @@ app.post('/', (req, res) => {
   res.render('layout.hbs');
 })
 
+app.get('/links', (req, res) => {
+  res.render('add.hbs');
+});
+
+app.post('/links', (req, res) => {
+  res.render('add.hbs');
+});
+
+app.get('/about', (req, res) => {
+  res.render('about.hbs');
+});
+
+app.post('/about', (req, res) => {
+  res.render('about.hbs');
+});
+
+
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

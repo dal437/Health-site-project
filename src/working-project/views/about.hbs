@@ -5,7 +5,7 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<h1><b><center>Let's Watch Some Movies!<center><b></h1>
+		<h1><b><center>Medical Conditions<center><b></h1>
     <style>
     table, th, td {
       border: 1px solid black;
@@ -14,15 +14,15 @@
     </style>
     <table>
     <tr>
-      <th>Title</th>
-      <th>Year</th>
-      <th>Director</th>
+      <th>Age</th>
+      <th>Ethnicity</th>
+      <th>Gender</th>
     </tr>
-    {{#each movies}}
+    {{#each state}}
     <tr>
-    <td>{{this.title}}</td>
-    <td>{{this.year}}</td>
-    <td>{{this.director}}</td>
+    <td>{{this.age}}</td>
+    <td>{{this.ethnicity}}</td>
+    <td>{{this.gender}}</td>
   </tr>
   {{/each}}
   </table>
