@@ -80,14 +80,16 @@ An Example List with Embedded Items:
 ## Research Topics
 
 
-* (3 points) Using Bootstrap.js
+* (2 points) Using Bootstrap.js
     * Will use this for front-end component library
 * (2 points) Using less
     * Will use as an extension to CSS
-* (4 points) D3 API Reference (Harder than the other two)
-    * Will use it for creating statistics and histograms
+* (3 points) Mocha
+    * Will use this for unit testing with javascript
+* (3 points) nconf
+    * Will use this for configuration management
 
-9 points total out of 8 required points
+10 points total out of 8 required points
 
 
 

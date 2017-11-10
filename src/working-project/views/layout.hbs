@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+<title></title>
+</head>
+<body>
+		<h1><center>Welcome to my Page<center/></h1>
+      <hr>
+
+      <form method="GET" action="/"><center>
+        <input type="radio" name="filterGenre" value="Rock"> Rock
+        <input type="radio" name="filterGenre" value="Pop"> Pop
+        <input type="radio" name="filterGenre" value="Hip-Hop"> Hip-Hop
+        <input type="radio" name="filterGenre" value="Electronic"> Electronic
+        <input type="radio" name="filterGenre" value="Metal"> Metal
+        <input type="radio" name="filterGenre" value="Jazz"> Jazz
+        <input type="submit" value="Filter by genre">
+      <center/></form>
+      <hr>
+
+		<center>Recommended Bandz<center/>
+      <ul>
+      {{#each bands as |n|}}
+      	<p>{{n.name}} ({{n.genre}}) - {{n.description}} | {{n.location}}</p>
+      {{/each}}
+      </ul>
+      <hr>
+    <center>Add a band recommendation<center/><br/>
+
+
+      <form method="POST" action="/">
+      	Band name: <input type="text" name="Bandname" required>
+        <br>
+        <br>
+      	Location: <input type="text" name="Location" required>
+        <br>
+        <br>
+      	Description: <input type="text" name="Description" required>
+        <br>
+        <br>
+      <input type="radio" name="filterGenre" value="Rock" required> Rock
+      <input type="radio" name="filterGenre" value="Pop" required> Pop
+      <br>
+      <br>
+      <input type="radio" name="filterGenre" value="Hip-Hop" required> Hip-Hop
+      <input type="radio" name="filterGenre" value="Electronic" required> Electronic
+      <br>
+      <br>
+      <input type="radio" name="filterGenre" value="Metal" required> Metal
+      <input type="radio" name="filterGenre" value="Jazz" required> Jazz
+      <br>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

@@ -8,10 +8,10 @@ const InfoSchema = new Schema({
     age: Number,
     gender: String
     date: Number,
-    typeofcancer: String
+    mental health: String
 });
 
-// list of sites for user to access 
+// list of sites for user to access
 const Listofsites = new mongoose.Schema({
   sites: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
 });
