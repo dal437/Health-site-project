@@ -1,30 +1,51 @@
+//app.js
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const path = require('path');
 const models = require('./db');
 
-// enable sessions
+// Server constants
 const sessionOptions = {
     secret: 'secretWord',
     saveUninitialized: false,
     resave: false,
 };
 
-
-app.set('views', path.join(__dirname, 'views'));
+// Configure appi
+app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session(sessionOptions));
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
-  res.render('layout.hbs');
+// Set up routes
+app.get('/movies', (req, res) => {
+    const d = req.query.director;
+    const q = {};
+    if (d) {
+        q.director = d;
+    }
+    models.Movie.find(q,
+        (err, movies) => res.render('layout.hbs', { movies }));
 });
 
-app.post('/', (req, res) => {
-  res.render('layout.hbs');
-})
+app.get('/movies/add', (_, res) => res.render('add.hbs'));
+app.post('/movies/add', (req, res) => {
+    const title = req.body.title;
+    const year = req.body.year;
+    const director = req.body.director;
+
+    const movie = new models.Movie({ title, year, director });
+    if (req.session.addedMovies) {
+        req.session.addedMovies.push(movie.toObject());
+    }
+    else {
+      req.session.addedMovies = [movie.toObject()];
+    }
+    movie.save(() => res.redirect('/movies'));
+});
+
+app.get('/about', (req, res) =>
+    res.render('about.hbs', { movies: req.session.addedMovies }));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
