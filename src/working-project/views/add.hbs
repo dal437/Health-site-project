@@ -6,13 +6,27 @@
 </head>
 	<body>
     <center><h1><b>Add a Site<b></h1>
-      <h2>Sites info:</h2>
+      <center>Please feel free to add a site that you think users would find helpful - <center/>
+      <h2>Medical sites:</h2>
 		<form action="/add" method="post">
-			<label></label><input type="text" name="title" placeholder="title" required />
-      <label>by</label>
-			<label></label><input type="text" name="director" placeholder="director" required />
-      <label>( <input type="text" name="year" placeholder="year" required /> )</label>
+			<label></label><input type="text" name="Site" placeholder="site" required />
 			<input type="submit" value="Add" /><center>
 		</form>
+    <center><h1><a href="/about">About</a> <b>|<b> <a href="/">Home</a></h1></center>
 	</body>
 </html>
+
+<!--
+Bootstrap work - Pseudocode (for research topic: Bootstrap.js)
+For creating a better form for users when they add a helpful site.
+
+<form class="navbar-form navbar-center" role="search">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Site">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+For creating better buttons
+<button type="button" class="btn btn-default navbar-btn">Submit</button>
+-->

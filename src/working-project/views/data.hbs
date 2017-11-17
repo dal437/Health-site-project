@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<h1><b><center>Data Information<center><b></h1>
+    <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    </style>
+    <table>
+    <tr>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>State</th>
+			<th>Ethnicity</th>
+    </tr>
+    {{#each infos}}
+    <tr>
+    <td>{{this.age}}</td>
+    <td>{{this.gender}}</td>
+    <td>{{this.state}}</td>
+		<td>{{this.ethnicity}}</td>
+  </tr>
+  {{/each}}
+  </table>
+	</body>
+</html>
