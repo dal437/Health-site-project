@@ -14,7 +14,6 @@ const sessionOptions = {
     resave: false,
 };
 
-
 app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session(sessionOptions));
@@ -36,15 +35,9 @@ app.post('/links', (req, res) => {
   res.render('add.hbs');
 });
 
-app.get('/about', (req, res) => {
+app.get("/about", (req, res) => {
   res.render('about.hbs');
 });
-
-app.post('/about', (req, res) => {
-  res.render('about.hbs');
-});
-
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

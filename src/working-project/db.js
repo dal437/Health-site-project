@@ -6,10 +6,10 @@ const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost/myapp';
 
 // my schema goes here!
 const InfoSchema = new Schema({
-    age: Number,
-    gender: String,
-    state: String,
-    ethnicity: String,
+    age: {type: Number, required: true},
+    gender: {type: String, required: true},
+    state: {type: String, required: true},
+    ethnicity: {type: String, required: true},
 });
 
 // list of sites for user to access
@@ -17,8 +17,12 @@ const Listofsites = new mongoose.Schema({
   sites: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
 });
 
+const InfoSchema = mongoose.model('InfoSchema', InfoSchema);
+const Listofsites = mongoose.model('Listofsites', Listofsites);
+
 mongoose.connect(MONGO_URI);
 
 module.exports = {
+    InfoSchema,
     Listofsites,
 };
