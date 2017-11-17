@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
     q.state = s;
   }
   models.Info.find(q,
-    (err, infos) => res.render('layout.hbs', { infos }));
+    (err, infos) => res.render('data.hbs', { "infos":infos }));
 });
 
 app.get('/data', (_, res) => res.render('data.hbs', {layout:false}));
@@ -52,7 +52,7 @@ app.post('/data', (req, res) => {
     else {
       req.session.addedInfo = [infoData.toObject()];
     }
-    infoData.save(() => res.redirect('/'));
+    infoData.save(() => res.redirect('/data'));
 });
 
 const PORT = process.env.PORT || 5000;
