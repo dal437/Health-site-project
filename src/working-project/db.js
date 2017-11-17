@@ -17,12 +17,12 @@ const Listofsites = new mongoose.Schema({
   sites: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
 });
 
-const InfoSchema = mongoose.model('InfoSchema', InfoSchema);
-const Listofsites = mongoose.model('Listofsites', Listofsites);
+const Info = mongoose.model('Info', InfoSchema);
+const List = mongoose.model('List', Listofsites);
 
 mongoose.connect(MONGO_URI);
 
 module.exports = {
-    InfoSchema,
-    Listofsites,
+    Info,
+    List,
 };
