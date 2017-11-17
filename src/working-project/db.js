@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost/myapp';
 
-
 // my schema goes here!
 const InfoSchema = new Schema({
     age: {type: Number, required: true},

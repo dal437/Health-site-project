@@ -19,17 +19,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session(sessionOptions));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
-  res.render('layout.hbs');
-});
-
 app.get('/links', (req, res) => {
-  res.render('add.hbs');
+  res.render('add.hbs', {layout:false});
 });
-
 
 app.get("/about", (req, res) => {
-  res.render('about.hbs');
+  res.render('about.hbs', {layout:false});
+});
+
+app.get('/', (req, res) => {
+  res.render('layout.hbs');
 });
 
 const PORT = process.env.PORT || 5000;
