@@ -2,31 +2,34 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Add a Movie</title>
+	<title>Add a Site</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 </head>
 	<body>
-    <center><h1><b>Add a Site<b></h1>
-      <center>Please feel free to add a site that you think users would find helpful - <center/>
+    <div class="jumbotron container"><center><h1><b>Add a Site<b></h1>
+
       <h2>Medical sites:</h2>
-		<form action="/add" method="post">
-			<label></label><input type="text" name="Site" placeholder="site" required />
-			<input type="submit" value="Add" /><center>
-		</form>
-    <center><h1><a href="/about">About</a> <b>|<b> <a href="/">Home</a></h1></center>
+      <center>Here are some sites that are available to learn more about these specific diseases - <center/>
+        <br>
+        <br>
+      <center>Please feel free to add a site that you think users would find helpful: <center/>
+
+    <!-- <form method="GET" action="/links"><center> -->
+      <!-- <input type="text" name="site"> -->
+    <!-- </center></form> -->
+
+    <hr>
+    <ul>
+    {{#each option as |n|}}
+      <p>{{n.sites}} </p>
+    {{/each}}
+    </ul>
+    <hr>
+
+    <form method="POST" action="/links"><center>
+			<label></label><input type="text" name="sites" placeholder="site" required />
+			<input type="submit" value="Add" class = "btn btn-success" /></center></form>
+
+    <center><h1><a href="/about">About</a> <b>|<b> <a href="/">Home</a></h1></center></div>
 	</body>
 </html>
-
-<!--
-Bootstrap work - Pseudocode (for research topic: Bootstrap.js)
-For creating a better form for users when they add a helpful site.
-
-<form class="navbar-form navbar-center" role="search">
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="Site">
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
-
-For creating better buttons
-<button type="button" class="btn btn-default navbar-btn">Submit</button>
--->

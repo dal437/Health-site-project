@@ -13,7 +13,7 @@ const InfoSchema = new Schema({
 
 // list of sites for user to access
 const Listofsites = new mongoose.Schema({
-  sites: {type: mongoose.Schema.Types.ObjectId, ref:'User'},
+  sites: {type: String},
 });
 
 const Info = mongoose.model('Info', InfoSchema);

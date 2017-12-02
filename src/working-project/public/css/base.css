@@ -1,4 +1,4 @@
-Working on less (pseudocode):
+/*Working on less (pseudocode):
 
 This will present the background color and text color:
 
@@ -17,7 +17,7 @@ ul{
 
 li{
   color: @text-color;
-}
+}*/
 
 
 body{
@@ -25,6 +25,16 @@ body{
 	font-family: Georgia, serif;
 	color: #ff8c00;
 	background-color: #ff8c00;
+}
+
+#header {
+  color: blue;
+  .navigation {
+    font-size: 40px;
+  }
+  .logo {
+    width: 30px;
+  }
 }
 
 h1 {

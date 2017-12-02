@@ -5,7 +5,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const path = require('path');
-//const bootstrap = require('bootstrap');
 const models = require('./db');
 
 // enable sessions
@@ -34,26 +33,55 @@ app.get('/', (req, res) => {
   if (s) {
     q.state = s;
   }
-  models.Info.find(q,
-    (err, infos) => res.render('data.hbs', { "infos":infos }));
+  res.render('layout.hbs');
 });
 
-app.get('/data', (_, res) => res.render('data.hbs', {layout:false}));
+app.get('/data', function(req, res) {
+  models.Info.find(
+    (err, infos) => {
+      console.log('infos', infos);
+      res.render('data.hbs', { layout:false, infos:infos });
+    });
+});
+
 app.post('/data', (req, res) => {
     const age = req.body.age;
     const gender = req.body.gender;
     const state = req.body.state;
     const ethnicity = req.body.ethnicity;
 
-    const infoData = new models.Info({ age, gender, state, ethnicity });
-    if (req.session.addedInfo) {
-        req.session.addedInfo.push(infoData.toObject());
-    }
-    else {
-      req.session.addedInfo = [infoData.toObject()];
-    }
-    infoData.save(() => res.redirect('/data'));
+    const infoData = new models.Info({ age:age, gender:gender, state:state, ethnicity:ethnicity });
+
+    infoData.save(function(err, info) {
+      if(err) throw err;
+      else {
+        console.log('The info is', info);
+        res.redirect('/data');
+      }
+    });
 });
+
+app.get('/links', function(req, res) {
+  models.List.find(
+    (err, sites) => {
+      console.log('sites', sites);
+      res.render('add.hbs', { layout:false, sites:sites });
+    });
+});
+
+app.post('/links', (req, res) => {
+    const newSite = req.body.sites;
+    const listData = new models.List({ newSite:sites });
+
+    listData.save(function(err, site) {
+      if(err) throw err;
+      else {
+        console.log('The site is', site);
+        res.redirect('/links');
+      }
+    });
+});
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

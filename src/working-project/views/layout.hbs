@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
 <title></title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 </head>
 <body>
 		<h1><center>Welcome to Medical Check-In<center/></h1>
@@ -14,8 +15,8 @@
         <input type="radio" name="filterDisease" value="Chronic Kidney Disease"> Chronic Kidney Disease
         <input type="radio" name="filterDisease" value="Cardiovascular Disease"> Cardiovascular Disease
       <center/></form>
-      <hr>
 
+			<hr>
 		<center>This site is designated to inform you more about the health qualities in your state<center/>
       <ul>
       {{#each option as |n|}}
@@ -23,7 +24,7 @@
       {{/each}}
       </ul>
       <hr>
-    <center>Please enter the following information: <center/><br/>
+    <div class="jumbotron container"><center>Please enter the following information: <center/><br/>
 
 
       <form method="POST" action="/data">
@@ -37,8 +38,8 @@
         <br>
         <br>
 				Ethnicity: <input type="text" name="ethnicity" required>
-      <input type="submit" value="Submit">
+      <input type="submit" value="Submit" class= "btn btn-success">
     </form>
-		<center><h1><a href="/links">More Links</a> <b>|<b> <a href="/about">About</a></h1></center>
+		<center><h1><a href="/links">More Links</a> <b>|<b> <a href="/about">About</a></h1></center></div>
 </body>
 </html>
