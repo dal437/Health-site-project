@@ -1,40 +1,8 @@
-/*Working on less (pseudocode):
-
-This will present the background color and text color:
-
-@background-color: #ff8c00;
-@text-color: #ff8c00;
-
-p{
-  background-color: @background-color;
-  color: @text-color;
-  padding: 20px;
-}
-
-ul{
-  background-color: @background-color;
-}
-
-li{
-  color: @text-color;
-}*/
-
-
-body{
+/*body{
 	margin: 30px;
 	font-family: Georgia, serif;
 	color: #ff8c00;
 	background-color: #ff8c00;
-}
-
-#header {
-  color: blue;
-  .navigation {
-    font-size: 40px;
-  }
-  .logo {
-    width: 30px;
-  }
 }
 
 h1 {
@@ -58,4 +26,4 @@ a {
 
 a.hover {
 	color: #3cb371;
-}
+}*/

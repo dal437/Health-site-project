@@ -33,7 +33,14 @@ app.get('/', (req, res) => {
   if (s) {
     q.state = s;
   }
-  res.render('layout.hbs');
+  /*let d = diseases;
+  const f = req.query.filterGenre;
+  if (f){
+    b = b.filter(band => band.genre === f);
+  }
+	res.render('layout.hbs', {bands:b});
+
+  res.render('layout.hbs');*/
 });
 
 app.get('/data', function(req, res) {
@@ -71,7 +78,7 @@ app.get('/links', function(req, res) {
 
 app.post('/links', (req, res) => {
     const newSite = req.body.sites;
-    const listData = new models.List({ newSite:sites });
+    const listData = new models.List({ newSite:newSite });
 
     listData.save(function(err, site) {
       if(err) throw err;
