@@ -38,9 +38,9 @@ app.get('/', (req, res) => {
   if (f){
     b = b.filter(band => band.genre === f);
   }
-	res.render('layout.hbs', {bands:b});
+	res.render('layout.hbs', {bands:b});*/
 
-  res.render('layout.hbs');*/
+  res.render('layout.hbs');
 });
 
 app.get('/data', function(req, res) {
