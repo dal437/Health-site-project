@@ -14,15 +14,15 @@
 
     <form method="POST" action="/data">
       <center>
-        <input type="radio" name="disease" value="diabetes"> Diabetes
-        <input type="radio" name="disease" value="asthma"> Asthma
-        <input type="radio" name="disease" value="arthritis"> Arthritis
-        <input type="radio" name="disease" value="chronic_kidney_disease"> Chronic Kidney Disease
-        <input type="radio" name="disease" value="cardiovascular_disease"> Cardiovascular Disease
+        <input type="radio" name="disease" value="diabetes" required> Diabetes
+        <input type="radio" name="disease" value="asthma" required> Asthma
+        <input type="radio" name="disease" value="arthritis" required> Arthritis
+        <input type="radio" name="disease" value="chronic_kidney_disease" required> Chronic Kidney Disease
+        <input type="radio" name="disease" value="cardiovascular_disease" required> Cardiovascular Disease
       <center/>
 
 			<hr />
-		  <center>This site is designated to inform you more about the health qualities in your state<center/>
+		  <center>This site is designated to inform you more about the health qualities in the Northeastern states: <center/>
       <!-- <ul>
         {{#each option as |n|}}
         	<p>{{n.gender}} ({{n.age}}) {{n.ethnicity}} | {{n.state}}</p>
@@ -37,12 +37,36 @@
       	Age: <input type="text" name="age" required>
         <br>
         <br>
-      	State (Initials please): <input type="text" name="state" required>
-        <br>
-        <br>
-				Ethnicity: <input type="text" name="ethnicity" required>
-      <input type="submit" value="Submit" class= "btn btn-success" />
+      	State: <select name = "state">
+					<option value="CT">Connecticut</option>
+					<option value="ME">Maine</option>
+					<option value="RI">Rhode Island</option>
+					<option value="VT">Vermont</option>
+					<option value="MA">Maine</option>
+					<option value="NH">New Hampshire</option>
+					<option value="NJ">New Jersey</option>
+					<option value="NY">New York</option>
+					<option value="PA">Pennsylvania</option>
+				</select>
 
+				<!--<input type="text" name="state" required> -->
+        <br>
+        <br>
+				Ethnicity: <select name = "ethnicity">
+					<option value="Asian">Asian</option>
+					<option value="Latino/Hispanic">Latino/Hispanic</option>
+					<option value="Caucasian">Cacuasian</option>
+					<option value="African American">African American</option>
+					<option value="Indian">Indian</option>
+				</select>
+
+				<!--<input type="text" name="ethnicity" required> -->
+				<br>
+				<br>
+				<br>
+      <input type="submit" value="Submit" class= "btn btn-success" />
+			<br>
+			<br>
   		<center>
         <h1><a href="/links">More Links</a> <b>|<b> <a href="/about">About</a></h1>
       </center>
