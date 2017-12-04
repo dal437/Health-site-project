@@ -19,10 +19,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session(sessionOptions));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/links', (req, res) => {
-  res.render('add.hbs', {layout:false});
-});
-
 app.get("/about", (req, res) => {
   res.render('about.hbs', {layout:false});
 });
@@ -43,44 +39,68 @@ app.get('/', (req, res) => {
   res.render('layout.hbs');
 });
 
-app.get('/data', function(req, res) {
-  models.Info.find(
+/* app.get('/data', function(req, res) {
+  models.Info.find({},
     (err, infos) => {
       console.log('infos', infos);
       res.render('data.hbs', { layout:false, infos:infos });
     });
-});
+});*/
 
 app.post('/data', (req, res) => {
     const age = req.body.age;
     const gender = req.body.gender;
     const state = req.body.state;
     const ethnicity = req.body.ethnicity;
+    const disease = req.body.disease;
 
-    const infoData = new models.Info({ age:age, gender:gender, state:state, ethnicity:ethnicity });
+    const search = new models.Search({
+      age,
+      gender,
+      state,
+      ethnicity,
+      disease,
+    });
 
-    infoData.save(function(err, info) {
-      if(err) throw err;
+    models.Info.findOne({
+      gender,
+      state,
+      ethnicity,
+      disease,
+    }, (err, info) => {
+      if (err) throw err;
       else {
-        console.log('The info is', info);
-        res.redirect('/data');
+        search.save(err => {
+          if(err) throw err;
+          else {
+            models.Search.find({}, (err, searches) => {
+              res.render('data.hbs', {
+                layout: false,
+                info: info,
+                searches: searches,
+              });
+            });
+          }
+        });
       }
     });
 });
 
 app.get('/links', function(req, res) {
-  models.List.find(
+  console.log('getting links');
+  models.Site.find({},
     (err, sites) => {
+      console.log('err', err);
       console.log('sites', sites);
       res.render('add.hbs', { layout:false, sites:sites });
     });
 });
 
-app.post('/links', (req, res) => {
-    const newSite = req.body.sites;
-    const listData = new models.List({ newSite:newSite });
+app.post('/link', (req, res) => {
+    const url = req.body.url;
+    const newSite = new models.Site({ url });
 
-    listData.save(function(err, site) {
+    newSite.save((err, site) => {
       if(err) throw err;
       else {
         console.log('The site is', site);

@@ -70,28 +70,23 @@ An Example List with Embedded Items:
 /add a site - page where user can add a site to the database of useful sites
 
 
-1. as non-registered user, I can put in information about my age, gender, state, and ethnicity a
+1. as non-registered user, I can put in information about my age, gender, state, and ethnicity
 2. as non-registered user, I can receive information about certain medical issues in my state
 3. as non-registered user, I can read more about certain medical conditions and look at charts
 4. as non-registered user, I can look at sites which could help me learn more about certain medical conditions
 5. as non-registered user, I can add a site to the list of given sites to help others read up more about medical conditions
+
 ## Research Topics
-
-
 * (2 points) Using Bootstrap.js
     * Will use this for front-end component library
 * (2 points) Using less
     * Will use as an extension to CSS
-* (3 points) Mocha
-    * Will use this for unit testing with javascript
 * (3 points) nconf
     * Will use this for configuration management
 
 10 points total out of 8 required points
 
 
-
 1. Bootstrap.js: http://getbootstrap.com/
 2. less: http://lesscss.org/
-3. Mocha: https://semaphoreci.com/community/tutorials/getting-started-with-node-js-and-mocha
-4. nconf:https://github.com/indexzero/nconf
+3. nconf:https://github.com/indexzero/nconf

@@ -16,24 +16,33 @@
 			align: center;
     }
     </style>
+    <h1>Search History</h1>
     <table>
-    <tr>
-      <th>Age</th>
-      <th>Gender</th>
-      <th>State</th>
-			<th>Ethnicity</th>
-    </tr>
-		<tbody>
-	    {{#each infos as |info|}}
 	    <tr>
-	    	<td>{{info.age}}</td>
-	    	<td>{{info.gender}}</td>
-	    	<td>{{info.state}}</td>
-				<td>{{info.ethnicity}}</td>
+			<th>Age</th>
+			<th>Gender</th>
+			<th>State</th>
+			<th>Ethnicity</th>
+	    </tr>
+		<tbody>
+	    {{#each searches}}
+	    <tr>
+			<td>{{this.age}}</td>
+			<td>{{this.gender}}</td>
+			<td>{{this.state}}</td>
+			<td>{{this.ethnicity}}</td>
 	  	</tr>
 	  	{{/each}}
-	</tbody>
-</table>
+		</tbody>
+	</table>
+
+	<br />
+	<center><h1>Results</h1>
+	{{#if info}}
+		<p>{{info.info}}</p>
+	{{else}}
+		<p>No results to show</p>
+	{{/if}}</center>
 	<center><h1><a href="/about">About</a> <b>|<b> <a href="/">Home</a></h1> <b>|<b> <a href="/links">More Links</a></center>
 	</body>
 </html>

@@ -1,38 +1,37 @@
 <!--Usage of bootstrap for research topic -->
 <!DOCTYPE html>
 <head>
-<title></title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-<link rel="stylesheet/less" type="text/css" href="main.less" />
-<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js"></script>
+  <title></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet/less" type="text/css" href="main.less" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js"></script>
 
 </head>
 <body>
 		<h1><center>Welcome to Medical Check-In<center/></h1>
-			<h2><center>Click on certain medical conditions you would like to know more about<center/></h2>
-      <hr>
+		<h2><center>Click on a certain medical condition you would like to know more about<center/></h2>
+    <hr />
 
-      <form method="GET" action="/"><center>
-        <input type="radio" name="filterDisease" value="Diabetes"> Diabetes
-        <input type="radio" name="filterDisease" value="Asthma"> Asthma
-        <input type="radio" name="filterDisease" value="Arthritis"> Arthritis
-        <input type="radio" name="filterDisease" value="Chronic Kidney Disease"> Chronic Kidney Disease
-        <input type="radio" name="filterDisease" value="Cardiovascular Disease"> Cardiovascular Disease
-      <center/></form>
+    <form method="POST" action="/data">
+      <center>
+        <input type="radio" name="disease" value="diabetes"> Diabetes
+        <input type="radio" name="disease" value="asthma"> Asthma
+        <input type="radio" name="disease" value="arthritis"> Arthritis
+        <input type="radio" name="disease" value="chronic_kidney_disease"> Chronic Kidney Disease
+        <input type="radio" name="disease" value="cardiovascular_disease"> Cardiovascular Disease
+      <center/>
 
-			<hr>
-		<center>This site is designated to inform you more about the health qualities in your state<center/>
-      <ul>
-      {{#each option as |n|}}
-      	<p>{{n.gender}} ({{n.age}}) {{n.ethnicity}} | {{n.state}}</p>
-      {{/each}}
-      </ul>
-      <hr>
-    <div class="jumbotron container"><center>Please enter the following information: <center/><br/>
-
-
-      <form method="POST" action="/data">
-      	Gender: <input type="text" name="gender" required>
+			<hr />
+		  <center>This site is designated to inform you more about the health qualities in your state<center/>
+      <!-- <ul>
+        {{#each option as |n|}}
+        	<p>{{n.gender}} ({{n.age}}) {{n.ethnicity}} | {{n.state}}</p>
+        {{/each}}
+      </ul>-->
+      <hr />
+      <div class="jumbotron container">
+        <center>Please enter the following information: <center/><br/>
+      	Gender (M or F): <input type="text" name="gender" required>
         <br>
         <br>
       	Age: <input type="text" name="age" required>
@@ -42,8 +41,12 @@
         <br>
         <br>
 				Ethnicity: <input type="text" name="ethnicity" required>
-      <input type="submit" value="Submit" class= "btn btn-success">
-    </form>
-		<center><h1><a href="/links">More Links</a> <b>|<b> <a href="/about">About</a></h1></center></div>
+      <input type="submit" value="Submit" class= "btn btn-success" />
+
+  		<center>
+        <h1><a href="/links">More Links</a> <b>|<b> <a href="/about">About</a></h1>
+      </center>
+    </div>
+  </form>
 </body>
 </html>
