@@ -109,6 +109,47 @@ app.post('/link', (req, res) => {
     });
 });
 
+app.get('/summary', function(req, res) {
+  /*
+  models.Search.find({}, function(err, count, searches) {
+    console.log('these are all the users', searches);
+    let totalAge = searches.reduce(function(prev,cur){
+        return prev.age += cur.age;
+    },0);
+    const averageAge = totalAge/count;
+    res.render('summary.hbs', {layout:false, averageAge: averageAge, maleCount: 10, femaleCount: 12});
+  });*/
+  models.Search.find({}, (err, searches) => {
+    let females = searches.filter(function(ele){
+      return ele.gender === 'F';
+    });
+    let males = searches.filter(function(ele){
+      return ele.gender === 'M';
+    });
+    let latinoEthnicity = searches.filter(function(ele){
+      return ele.ethnicity === 'Latino/Hispanic'
+    });
+    let caucasianEthnicity = searches.filter(function(ele){
+      return ele.ethnicity === 'Caucasian'
+    });
+    let asianEthnicity = searches.filter(function(ele){
+      return ele.ethnicity === 'Asian'
+    });
+    let africanEthnicity = searches.filter(function(ele){
+      return ele.ethnicity === 'African American'
+    });
+    res.render('summary.hbs', {
+      layout: false,
+      femaleCount: females.length,
+      maleCount: males.length,
+      latinoCount: latinoEthnicity.length,
+      asianCount: asianEthnicity.length,
+      africanCount: africanEthnicity.length,
+      caucasianCount: caucasianEthnicity.length,
+    });
+  });
+});
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
