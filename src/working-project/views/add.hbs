@@ -9,8 +9,7 @@
 </head>
 	<body>
     <div class="jumbotron container"><center><h1><b>Add a Site<b></h1>
-      <h2>Medical sites:</h2>
-      <center>Here are some sites that are available to learn more about these specific diseases - </center>
+
 			<style>
 	    table, th, td {
 	      border: 1px solid black;
@@ -18,22 +17,23 @@
 				text-align: center;
 	    }
 	    </style>
+			<h2>Medical sites:</h2>
 			<table class="table text-center">
-		    <tr>
-				<th>Sites</th>
-		    </tr>
-			<tbody>
 				<tr>
+					<th>Sites</th>
+		    </tr>
+				<tbody>
 					{{#each sites}}
-				</tr>
-				<td>{{this.url}}</td>
-		  	{{/each}}
-			</tbody>
-		</table>
+					<tr>
+						<td>{{this.url}}</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
 
         <br>
         <br>
-      <center>Please feel free to add a site that you think users would find helpful: </center>
+      <center>Please feel free to add a site that you think users would find helpful for these certain diseases: </center>
 			<br>
 			<br>
 

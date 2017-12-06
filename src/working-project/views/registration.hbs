@@ -11,12 +11,13 @@
     <div class="jumbotron container"><center><h1><b>Registration Page for Medical Check-In<b></h1>
 			<br>
 			<br>
+			<center><h2><b>Hello! If you are a newtime user, please register. If you already have an account, feel free to log in.<b></h2>
 			{{#if message}}
 			<p>{{message}}</p>
 			{{/if}}
 			<br>
 			<br>
-			<p>This is the Log-In Page<p>
+			<p>Log-In Page<p>
 			<form method="POST" action="/login">
 				username: <input name="username" type="text">
 				password: <input name="password" type="password">
@@ -24,7 +25,7 @@
 			</form>
 			<br>
 			<br>
-			<p>This is the Registration Page<p>
+			<p>Registration Page<p>
 			<form method="POST" action="/register">
 				username: <input name="username" type="text">
 				password: <input name="password" type="password">
