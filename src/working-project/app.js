@@ -6,21 +6,58 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const path = require('path');
 const models = require('./db');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const passportLocal = require('passport-local');
+const passportLocalMongoose = require('passport-local-mongoose');
+User = mongoose.model("User");
+//User = mongoose.model('User', User);
+require('./auth');
+
+//const flash = require('connect-flash');
+//const morgan = require('morgan');
+//const cookieParser = require('cookie-parser');
+
+//const configDB = require('./config/db.js');
 
 // enable sessions
 const sessionOptions = {
-    secret: 'secretWord',
-    saveUninitialized: false,
-    resave: false,
+	secret: 'secret cookie thang (store this elsewhere!)',
+	resave: true,
+	saveUninitialized: true
 };
 
 app.set('views', path.join(__dirname, 'views'));
+//app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session(sessionOptions));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(function(req, res, next){
+	res.locals.user = req.user;
+	next();
+});
+
+//Code from Authentication Slides
+passport.serializeUser(function(user, done) {
+	done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+	User.findById(id, function(err, user) {
+		done(err, user);
+	});
+});
+
 app.get("/about", (req, res) => {
   res.render('about.hbs', {layout:false});
+});
+
+app.get("/layout", (req, res) => {
+  res.render('layout.hbs');
 });
 
 app.get('/', (req, res) => {
@@ -29,23 +66,8 @@ app.get('/', (req, res) => {
   if (s) {
     q.state = s;
   }
-  /*let d = diseases;
-  const f = req.query.filterGenre;
-  if (f){
-    b = b.filter(band => band.genre === f);
-  }
-	res.render('layout.hbs', {bands:b});*/
-
-  res.render('layout.hbs');
+  res.render('registration.hbs', {layout:false});
 });
-
-/* app.get('/data', function(req, res) {
-  models.Info.find({},
-    (err, infos) => {
-      console.log('infos', infos);
-      res.render('data.hbs', { layout:false, infos:infos });
-    });
-});*/
 
 app.post('/data', (req, res) => {
     const age = req.body.age;
@@ -150,6 +172,35 @@ app.get('/summary', function(req, res) {
   });
 });
 
+//Used from Authentication slides
+app.get('/registration', function(req, res) {
+  res.render('registration.hbs', {layout:false});
+});
+
+app.post('/register', function(req, res) {
+  User.register(new User({username:req.body.username}),
+      req.body.password, function(err, user){
+    if (err) {
+      res.render('registration.hbs', {message:'Your registration information is not valid', layout:false});
+    } else {
+      passport.authenticate('local')(req, res, function() {
+        res.render('registration.hbs', {"message":"Congrats! Your registration is complete! Please enter your information into the log-in field.", layout:false});
+      });
+    }
+  });
+});
+
+app.post('/login', function(req,res,next) {
+  passport.authenticate('local', function(err,user) {
+    if(user) {
+      req.logIn(user, function(err) {
+        res.render('layout.hbs');
+      });
+    } else {
+      res.render('registration.hbs', {message:'Your login or password is incorrect.', layout:false});
+    }
+  })(req, res, next);
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

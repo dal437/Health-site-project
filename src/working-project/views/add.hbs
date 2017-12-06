@@ -11,13 +11,26 @@
     <div class="jumbotron container"><center><h1><b>Add a Site<b></h1>
       <h2>Medical sites:</h2>
       <center>Here are some sites that are available to learn more about these specific diseases - </center>
-			<hr>
-			<ul>
-	    {{#each sites}}
-	      <p>{{this.url}} </p>
-	    {{/each}}
-	    </ul>
-			<hr>
+			<style>
+	    table, th, td {
+	      border: 1px solid black;
+	      border-collapse: collapse;
+				text-align: center;
+	    }
+	    </style>
+			<table class="table text-center">
+		    <tr>
+				<th>Sites</th>
+		    </tr>
+			<tbody>
+				<tr>
+					{{#each sites}}
+				</tr>
+				<td>{{this.url}}</td>
+		  	{{/each}}
+			</tbody>
+		</table>
+
         <br>
         <br>
       <center>Please feel free to add a site that you think users would find helpful: </center>
@@ -40,6 +53,6 @@
 			<label></label><input type="text" name="url" placeholder="url" required />
 			<input type="submit" value="Add" class = "btn btn-success" /></center></form>
 
-    <center><h1><a href="/about">About</a> <b>|<b> <a href="/">Home</a></h1></center></div>
+    <center><h1><a href="/about">About</a> <b>|<b> <a href="/layout">Home</a></h1></center></div>
 	</body>
 </html>

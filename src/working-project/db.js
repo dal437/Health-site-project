@@ -1,7 +1,8 @@
-// 1ST DRAFT DATA MODEL
+// db.js
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost/myapp';
+const passportLocalMongoose = require('passport-local-mongoose')
 
 // my schema goes here!
 const InfoSchema = new Schema({
@@ -21,15 +22,14 @@ const SearchSchema = new Schema({
     disease: {type: String, required: true},
 },{ timestamps: true });
 
-// list of sites for user to access
-/* const Listofsites = new mongoose.Schema({
-  sites: {type: String},
-});*/
-
 const SiteSchema = new Schema({
 	url: {type: String, required: true}
 });
 
+const UserSchema = new mongoose.Schema({ });
+
+UserSchema.plugin(passportLocalMongoose);
+let User = mongoose.model('User', UserSchema);
 const Info = mongoose.model('Info', InfoSchema);
 const Site = mongoose.model('Site', SiteSchema);
 const Search = mongoose.model('Search', SearchSchema);
